@@ -46,7 +46,7 @@ app.post("/v4/ip", async (req, res, next) => {
   });
 });
 
-app.put("v4/ip", async (req, res, next) => {
+app.put("/v4/ip", async (req, res, next) => {
   const ip = requestIp.getClientIp(req);
   res.json({
     ip: ip,
@@ -60,7 +60,7 @@ app.put("v4/ip", async (req, res, next) => {
   });
 });
 
-app.delete("v4/ip", async (req, res, next) => {
+app.delete("/v4/ip", async (req, res, next) => {
   const ip = requestIp.getClientIp(req);
   res.json({
     ip: ip,
