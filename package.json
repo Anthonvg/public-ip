@@ -1,0 +1,30 @@
+{
+  "name": "public-ip",
+  "version": "1.0.0",
+  "description": "Validate your public ip",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anthonvg/public-ip.git"
+  },
+  "keywords": [
+    "public",
+    "ip"
+  ],
+  "author": "Anthonvg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anthonvg/public-ip/issues"
+  },
+  "homepage": "https://github.com/Anthonvg/public-ip#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "express-useragent": "^1.0.15",
+    "public-ip": "^5.0.0"
+  },
+  "type": "module"
+}
