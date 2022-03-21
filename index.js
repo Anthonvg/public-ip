@@ -7,8 +7,10 @@ const app = express();
 app.use(useragent.express());
 app.use(cors());
 
+const PORT = process.env.PORT || 3000;
+
 // Get the IP address of the client
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("Server running on port 3000");
 });
 
