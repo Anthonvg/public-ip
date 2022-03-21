@@ -1,4 +1,4 @@
-# Who is my public ip and User-agent
+# What is my public ip and User-agent
 
 Basic project to test proxy ips with all http methods.
 
