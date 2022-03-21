@@ -1,7 +1,7 @@
-const cors = require("cors");
-const { getIp } = require("./ip");
-const express = require("express");
-const useragent = require("express-useragent");
+import cors from "cors";
+import express from "express";
+import publicIp from "public-ip";
+import useragent from "express-useragent";
 
 const app = express();
 app.use(useragent.express());
@@ -19,7 +19,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/v4/ip", async (req, res, next) => {
-  const ip = await getV4IP(req);
+  const ip = await getV4IP();
   res.json({
     ip: ip,
     type: "v4",
@@ -33,7 +33,7 @@ app.get("/v4/ip", async (req, res, next) => {
 });
 
 app.post("/v4/ip", async (req, res, next) => {
-  const ip = await getV4IP(req);
+  const ip = await getV4IP();
   res.json({
     ip: ip,
     type: "v4",
@@ -47,7 +47,7 @@ app.post("/v4/ip", async (req, res, next) => {
 });
 
 app.put("v4/ip", async (req, res, next) => {
-  const ip = await getV4IP(req);
+  const ip = await getV4IP();
   res.json({
     ip: ip,
     type: "v4",
@@ -61,7 +61,7 @@ app.put("v4/ip", async (req, res, next) => {
 });
 
 app.delete("v4/ip", async (req, res, next) => {
-  const ip = await getV4IP(req);
+  const ip = await getV4IP();
   res.json({
     ip: ip,
     type: "v4",
@@ -74,7 +74,74 @@ app.delete("v4/ip", async (req, res, next) => {
   });
 });
 
+app.get("/v6/ip", async (req, res, next) => {
+  const ip = await getV6IP();
+  res.json({
+    ip: ip,
+    type: "v6",
+    device: {
+      os: req.useragent.os,
+      source: req.useragent.source,
+      platform: req.useragent.platform,
+      userAgent: req.useragent.browser,
+    },
+  });
+});
 
-function getV4IP(request) {
-  return getIp(request);
+app.post("/v6/ip", async (req, res, next) => {
+  const ip = await getV6IP();
+  res.json({
+    ip: ip,
+    type: "v6",
+    device: {
+      os: req.useragent.os,
+      source: req.useragent.source,
+      platform: req.useragent.platform,
+      userAgent: req.useragent.browser,
+    },
+  });
+});
+
+app.put("v6/ip", async (req, res, next) => {
+  const ip = await getV6IP();
+  res.json({
+    ip: ip,
+    type: "v6",
+    device: {
+      os: req.useragent.os,
+      source: req.useragent.source,
+      platform: req.useragent.platform,
+      userAgent: req.useragent.browser,
+    },
+  });
+});
+
+app.delete("v6/ip", async (req, res, next) => {
+  const ip = await getV6IP();
+  res.json({
+    ip: ip,
+    type: "v6",
+    device: {
+      os: req.useragent.os,
+      source: req.useragent.source,
+      platform: req.useragent.platform,
+      userAgent: req.useragent.browser,
+    },
+  });
+});
+
+function getV4IP() {
+  return new Promise((resolve, reject) => {
+    publicIp.v4().then((ip) => {
+      resolve(ip);
+    });
+  });
+}
+
+function getV6IP() {
+  return new Promise((resolve, reject) => {
+    publicIp.v6().then((ip) => {
+      resolve(ip);
+    });
+  });
 }
