@@ -24,7 +24,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "express-useragent": "^1.0.15",
-    "public-ip": "^5.0.0"
-  },
-  "type": "module"
+    "request-ip": "^2.1.3"
+  }
 }
